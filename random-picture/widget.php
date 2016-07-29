@@ -24,7 +24,6 @@ class RandomPicture_widget extends WP_Widget {
 		$RP_themeid   = (int) $instance['themeid'];
 		
 		$RP_Optionen = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}bwg_option LIMIT 0,1");
-		
 		$RP_thumb_width = $RP_Optionen[0]->thumb_width;
 		$RP_thumb_height = $RP_Optionen[0]->thumb_height; 
 		$RP_open_with_fullscreen = $RP_Optionen[0]->popup_fullscreen;
@@ -111,12 +110,13 @@ class RandomPicture_widget extends WP_Widget {
 		</script>";
 		// End Source from Photogallerie
 		
-		$RP_title    = esc_attr( $instance['title'] );
+		//Formating:
+		echo "<aside id='widget_random_Picture' class='widget widget_random_Picture'>";
 		
+		$RP_title    = esc_attr( $instance['title'] );
 		echo "<h3 class='widget-title'>". $RP_title ."</h3>";
 		
-		$RP_ergebnise = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}bwg_image WHERE `published` =1 ORDER BY RAND() LIMIT 0,1");
-				
+		$RP_ergebnise = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}bwg_image WHERE `published` =1 ORDER BY RAND() LIMIT 0,1");	
 		$RP_url = site_url()."/wp-content/uploads/photo-gallery";
 		$RP_thumb_url = $RP_url.$RP_ergebnise[0]->thumb_url;
 		$RP_id = $RP_ergebnise[0]->id;
@@ -124,16 +124,14 @@ class RandomPicture_widget extends WP_Widget {
 		$RP_image_url  = $RP_url.$RP_ergebnise[0]->image_url;
 		$RP_alt  = $RP_ergebnise[0]->alt;
 		
-		
 		echo "<a class='bwg_lightbox_0' href='". $RP_image_url ."' data-image-id='". $RP_id ."' data-gallery-id='". $RP_gallery_id ."'>";
 		echo "<img style='visibility: visible;' class='bwg_masonry_thumb_0 bwg_img_clear bwg_img_custom' id='". $RP_id ."'src='". $RP_thumb_url ."' alt='". $RP_alt ."'>";
 		echo "</a>";
-
+		echo "</aside>";
 	}
 
 	function update( $new_instance, $old_instance ) {
 		// Save widget options
-
 	    $instance = $old_instance;
 		$instance['title']      = strip_tags( $new_instance['title'] );
 		$instance['themeid']     = (int) $new_instance['themeid'];
@@ -143,30 +141,25 @@ class RandomPicture_widget extends WP_Widget {
 	function form( $instance ) {
 		// Output admin widget options form
 		global $wpdb;
-
-                // Defaults
-                $instance = wp_parse_args( 
-                	(array) $instance, array(
-                    	'title' => 'Zufallsbild',
-                    	'themeid' => 1                 
-                	) 
-                );
-
-                // Values
-                $RP_title    = esc_attr( $instance['title'] );
-				$RP_themeid   = (int) $instance['themeid'];
-                
-              ?>
-                <p>
-                    <label for="<?php echo $this->get_field_id( 'title' ); ?>">Titel:</label>
-                    <input type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $RP_title; ?>" size="25" />
-                </p>
-                
-                   <p>
-                    <label for="<?php echo $this->get_field_id( 'themeid' ); ?>">Theme-ID:</label>
-                    <input type="text" id="<?php echo $this->get_field_id( 'themeid' ); ?>" name="<?php echo $this->get_field_name( 'themeid' ); ?>" value="<?php echo $RP_themeid; ?>" size="5" />
-                </p> 	
-                
+              // Defaults
+              $instance = wp_parse_args( 
+              	(array) $instance, array(
+                  	'title' => 'Zufallsbild',
+                  	'themeid' => 1                 
+              	) 
+              );
+              // Values
+              $RP_title    = esc_attr( $instance['title'] );
+			$RP_themeid   = (int) $instance['themeid'];
+            ?>
+            <p>
+                <label for="<?php echo $this->get_field_id( 'title' ); ?>">Titel:</label>
+                <input type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $RP_title; ?>" size="25" />
+            </p>
+               <p>
+                <label for="<?php echo $this->get_field_id( 'themeid' ); ?>">Theme-ID:</label>
+                <input type="text" id="<?php echo $this->get_field_id( 'themeid' ); ?>" name="<?php echo $this->get_field_name( 'themeid' ); ?>" value="<?php echo $RP_themeid; ?>" size="5" />
+            </p>
 <?php
 	}
 }
@@ -176,6 +169,5 @@ function RandomPicture_widgets() {
 }
 
 add_action( 'widgets_init', 'RandomPicture_widgets' );
-
 
 ?>
