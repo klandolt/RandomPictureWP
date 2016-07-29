@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Random Picture
-Description: Zufallsbild als Widget wobei die Bilder in der Photo Gallerie von WebDorado sein müssen
+Description: Zufallsbild als Widget wobei die Bilder in der Photo Gallerie von WebDorado sein müssen.
 Author: Kevin Landolt
 Version: 1.0
 
