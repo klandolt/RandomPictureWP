@@ -10,39 +10,9 @@ class RandomPicture_widget extends WP_Widget {
 		// Widget output
 		
 		global $wpdb; 
-		$wpdb->show_errors();
+		//For Debug only: $wpdb->show_errors();
 		
 		// Include Source from Photogallerie pimped with Settings from DB
-		/*
-		theme_id=3 Config im Widget Menü
-		thumb_width=180 Miniaturansicht-Optionen => Größe Frontend-Miniaturansicht: 
-		thumb_height=90 Miniaturansicht-Optionen => Größe Frontend-Miniaturansicht: 
-		open_with_fullscreen=0 Leuchtkasten => Volle Breite des Leuchtkastens:
-		open_with_autoplay=0
-		image_width=800
-		image_height=500
-		image_effect=fade
-		enable_image_filmstrip=1
-		image_filmstrip_height=50
-		enable_image_ctrl_btn=1
-		enable_image_fullscreen=1
-		popup_enable_info=1
-		popup_info_always_show=0
-		popup_info_full_width=0
-		popup_hit_counter=1
-		popup_enable_rate=0
-		slideshow_interval=5
-		enable_comment_social=0
-		enable_image_facebook=1
-		enable_image_twitter=1
-		enable_image_google=1
-		enable_image_ecommerce=undefined
-		enable_image_pinterest=0
-		enable_image_tumblr=0
-		watermark_type=none
-		slideshow_effect_duration=1
-		*/
-		
 		$RP_themeid   = (int) $instance['themeid'];
 		
 		$RP_Optionen = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}bwg_option LIMIT 0,1");
