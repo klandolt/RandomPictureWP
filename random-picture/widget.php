@@ -4,6 +4,14 @@ class RandomPicture_widget extends WP_Widget {
 	function RandomPicture_widget() {
 		// Instantiate the parent object
 		parent::__construct( false, 'Zufallsbild Widget' );
+		$widget_ops = array(
+			'classname' => 'random_picture',
+			'description' => 'Zufallsbild aus Photo Gallerie von WebDorado.'
+		);
+		// Widget Control Settings.
+		$control_ops = array('id_base' => 'random_picture');
+		// Create the widget.
+		parent::__construct('random_picture', 'Zufallsbild Widget', $widget_ops, $control_ops);
 	}
 
 	function widget( $args, $instance ) {
