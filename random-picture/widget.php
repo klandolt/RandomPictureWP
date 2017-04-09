@@ -1,7 +1,7 @@
 <?php
 class RandomPicture_widget extends WP_Widget {
 
-	function RandomPicture_widget() {
+	function __construct() {
 		// Instantiate the parent object
 		parent::__construct( false, 'Zufallsbild Widget' );
 		$widget_ops = array(
