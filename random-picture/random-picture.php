@@ -22,6 +22,6 @@ function rp_activation(){
 	
 }
 
-
+require_once('includes/RandomPict.php');
 require_once('widget/widget.php');
 ?>
