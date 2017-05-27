@@ -2,7 +2,7 @@
 
 function RandomPicture_ShortCode( $atts, $content = null ) {
     $a = shortcode_atts( array(
-        'id' => 1
+        'Theme-ID' => 1
     ), $atts );
 	
 	$ScipteHead = getGallerySource($themeid);
