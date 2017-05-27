@@ -3,7 +3,7 @@
 Plugin Name: Random Picture
 Description: Zufallsbild als Widget wobei die Bilder in der Photo Gallerie von WebDorado sein müssen.
 Author: Kevin Landolt
-Version: 1.0
+Version: 2.0
 
 */
 setlocale(LC_ALL,'de_DE.UTF-8');
@@ -22,6 +22,7 @@ function rp_activation(){
 	
 }
 
+require_once('includes/AdminPage.php');
 require_once('includes/RandomPict.php');
 require_once('widget/widget.php');
 require_once('shortcodes/shortcodes.php');
