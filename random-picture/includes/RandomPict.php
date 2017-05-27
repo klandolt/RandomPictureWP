@@ -1,5 +1,8 @@
 <?PHP
- 
+/* 
+	File for internal functions
+*/
+
 function getGallerySource($themeid){
 	
 		$RP_themeid = $themeid;

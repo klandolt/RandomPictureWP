@@ -1,4 +1,7 @@
 <?PHP
+/* 
+	File for shortcode setting
+*/
 
 function RandomPicture_ShortCode( $atts, $content = null ) {
     $a = shortcode_atts( array(

@@ -1,4 +1,8 @@
 <?php
+/* 
+	File for widget settings
+*/
+
 class RandomPicture_widget extends WP_Widget {
 
 	function __construct() {
